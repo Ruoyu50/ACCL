@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+    <style>
+    body {
+    margin: 0;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <main style="background-color: black">
+    <style>
+        a:visited{
+            color:gray;
+        }
+        a:hover{
+            color: white;
+        }
+        a:link{
+            color: white;
+        }
+        </style>
+    <a href="LOADING.html?next=TYPO.html" style="text-decoration: none">BACK</a>
+    </main>
+<script>
+     var w = window.innerWidth;
+var h = window.innerHeight;  
+    
+    let font;
+let points = [];
+let particles = [];
+
+function preload() {
+  font = loadFont('Arial.ttf');
+}
+
+function setup() {
+  createCanvas(w,h);
+  points = font.textToPoints('Snow', w/2-500, h/2+100, 500, {sampleFactor: 0.2});
+  for (let pt of points) {
+    particles.push(new Particle(pt.x, pt.y));
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    p.update();
+    p.display();
+    if (p.isDead()) {
+      particles.splice(i, 1);  // 移除死亡的粒子
+    }
+  }
+}
+
+function mousePressed() {
+  for (let p of particles) {
+    if (dist(p.x, p.y, mouseX, mouseY) < 50) {
+      p.explode();
+    }
+  }
+}
+
+class Particle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.vx = 0;
+    this.vy = 0;
+    this.exploded = false;
+    this.life = 255;  // 粒子的生命值
+  }
+
+  update() {
+    if (this.exploded) {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life -= 5;  // 每帧减少粒子的生命值
+    }
+  }
+
+  explode() {
+    this.exploded = true;
+    this.vx = random(-3, 3);
+    this.vy = random(-3, 3);
+  }
+
+  isDead() {
+    return this.life <= 0;  // 判断粒子是否死亡
+  }
+
+  display() {
+    fill(255, this.life);
+    noStroke();
+    ellipse(this.x, this.y, 5, 5);
+  }
+}
+
+     window.onresize = function() {
+  w = window.innerWidth;
+  h = window.innerHeight;  
+  canvas.size(w, h);
+}
+      </script>
+  </body>
+</html>

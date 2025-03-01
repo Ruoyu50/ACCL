@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+    <style>
+    body {
+    margin: 0;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <main style="background-color: rgb(150,150,150);">
+    <style>
+        a:visited{
+            color:gray;
+        }
+        a:hover{
+            color: white;
+        }
+        a:link{
+            color: white;
+        }
+        </style>
+    <a href="LOADING.html?next=TYPO.html" style="text-decoration: none">BACK</a>
+    </main>
+    <script>
+        
+        var w = window.innerWidth;
+var h = window.innerHeight;  
+        
+let font;
+let letter;
+let bubbles = [];
+let fading = false;  // 控制淡入淡出
+
+function preload() {
+  font = loadFont('Arial.ttf');
+}
+
+function setup() {
+  createCanvas(w, h);
+  let points = font.textToPoints('Rain', w/2-300, h/2+50, 400, { sampleFactor: 0.3 });
+  letter = new Letter(points);
+
+  // 创建一些气泡
+  for (let i = 0; i < 30; i++) {
+    bubbles.push(new Bubble());
+  }
+}
+
+function draw() {
+  background(150);
+  letter.update();
+  letter.display();
+
+  for (let bubble of bubbles) {
+    bubble.move();
+    bubble.display();
+    bubble.checkCollision(letter);
+  }
+}
+
+function mousePressed() {
+  fading = !fading;
+}
+
+class Letter {
+  constructor(points) {
+    this.points = points;
+    this.colors = [];
+    this.alpha = 255;
+    this.exists = new Array(points.length).fill(true);  // 控制每个点是否存在
+    for (let i = 0; i < points.length; i++) {
+      this.colors.push(color(0,125,255));
+    }
+  }
+
+  update() {
+    if (fading) {
+      this.alpha -= 5;
+    } else {
+      this.alpha += 5;
+    }
+    this.alpha = constrain(this.alpha, 0, 255);
+  }
+
+  display() {
+    noStroke();
+    for (let i = 0; i < this.points.length; i++) {
+      if (this.exists[i]) {
+        let c = this.colors[i];
+        fill(red(c), green(c), blue(c), this.alpha);
+        ellipse(this.points[i].x, this.points[i].y, 5, 5);
+      }
+    }
+  }
+}
+
+class Bubble {
+  constructor() {
+    this.x = random(width);
+    this.y = random(height);
+    this.vx = random(-2, 2);
+    this.vy = random(-2, 2);
+    this.size = random(8, 15);
+    this.col = color(0,125,255);
+  }
+
+  move() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > width) this.vx *= -1;
+    if (this.y < 0 || this.y > height) this.vy *= -1;
+  }
+
+  display() {
+    fill(this.col);
+    noStroke();
+    rect(this.x, this.y, this.size, this.size);
+  }
+
+  checkCollision(letter) {
+    for (let i = 0; i < letter.points.length; i++) {
+      if (letter.exists[i]) {
+        let d = dist(this.x, this.y, letter.points[i].x, letter.points[i].y);
+        if (d < this.size / 2 + 2.5) {  // 气泡碰到点
+          letter.exists[i] = false;  // 让这个点消失
+        }
+      }
+    }
+  }
+}
+        window.onresize = function() {
+  w = window.innerWidth;
+  h = window.innerHeight;  
+  canvas.size(w, h);
+}
+      </script>
+  </body>
+</html>

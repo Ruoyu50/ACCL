@@ -1,101 +1,101 @@
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-}
+new p5(function(p) {
+  p.setup = function() {
+let canvas = p.createCanvas(300,300);
+      canvas.parent('one');
+};
 
-function draw() {
-  background(255, 255, 225);
+p.draw = function() {
+  p.background(255, 255, 225);
   
-  blendMode(BLEND);
+  p.blendMode(p.BLEND);
 
-  push()
+  p.push()
   //f(x)=1 / 2 - [(1 / 2)^(x+1)]
   let k = -2
   let base = 1 / 2
   let exponent = -k
   let scalenumber = base ** exponent
   let result = base - (base ** (exponent + 1))
-  let resultX = width * result
-  let resultY = height * result
-  translate(resultX, resultY)  
-  scale(scalenumber)
-  //console.log(scalenumber)
+  let resultX = p.width * result
+  let resultY = p.height * result
+  p.translate(resultX, resultY)  
+  p.scale(scalenumber)
+  //console.log(scalenumber)//
+  p.push()
+  p.translate(p.width/2, p.height/2)
+  p.blendMode(p.OVERLAY)
+  p.fill(0,0,63.25)
+  p.stroke(0,0,127.5)
+  p.strokeWeight(100)
+  p.ellipse(0,0,1650,1375)
+  p.pop()
   
-  push()
-  translate(width/2, height/2)
-  blendMode(OVERLAY)
-  fill(0,0,63.25)
-  stroke(0,0,127.5)
-  strokeWeight(100)
-  ellipse(0,0,1650,1375)
-  pop()
+  p.push()
+  p.translate(p.width/2, p.height/2)
+  p.fill(255, 200, 200)
+  p.stroke(255, 210, 210)
+  p.strokeWeight(20)
+  p.rectMode(p.CENTER)
+  p.rect(0, 0, 1200, 1000, 100)
+  p.fill(255, 225, 225)
+  p.stroke(255, 210, 210)
+  p.rect(0, 0, 1050, 875, 87.5)
+  p.pop()
   
-  push()
-  translate(width/2, height/2)
-  fill(255, 200, 200)
-  stroke(255, 210, 210)
-  strokeWeight(20)
-  rectMode(CENTER)
-  rect(0, 0, 1200, 1000, 100)
-  fill(255, 225, 225)
-  stroke(255, 210, 210)
-  rect(0, 0, 1050, 875, 87.5)
-  pop()
-  
-  push()
-  translate(width/2, height/2)
-  rotate(PI / -8)
-  fill(175)
-  noStroke()
-  rectMode(CENTER)
-  rect(0, 0, 520, 95)
-  pop()
+  p.push()
+  p.translate(p.width/2, p.height/2)
+  p.rotate(p.PI / -8)
+  p.fill(175)
+  p.noStroke()
+  p.rectMode(p.CENTER)
+  p.rect(0, 0, 520, 95)
+  p.pop()
 
-  push()
-  translate(width/2, height/2)
-  rotate(PI / -8)
-  fill(175)
-  stroke(175)
-  strokeWeight(20)
-  ellipse(0, 50, 500, 400)
-  pop()
+  p.push()
+  p.translate(p.width/2, p.height/2)
+  p.rotate(p.PI / -8)
+  p.fill(175)
+  p.stroke(175)
+  p.strokeWeight(20)
+  p.ellipse(0, 50, 500, 400)
+  p.pop()
     
-  push()
-  translate(width/2,height/2)
-  rotate(PI/-8)
-  fill(125)
-  stroke(125)
-  strokeWeight(20)
-  ellipse(0, -50, 500, 400)
-  pop()
+  p.push()
+  p.translate(p.width/2,p.height/2)
+  p.rotate(p.PI/-8)
+  p.fill(125)
+  p.stroke(125)
+  p.strokeWeight(20)
+  p.ellipse(0, -50, 500, 400)
+  p.pop()
   
-  push()
-  translate(width/2, height/2)
-  rotate(PI / -8)
-  fill(255, 225, 225)
-  stroke(255, 255, 225)
-  strokeWeight(20)
-  arc(0, -50, 500, 400, PI/15, PI-PI/15)
-  pop()
+  p.push()
+  p.translate(p.width/2, p.height/2)
+  p.rotate(p.PI / -8)
+  p.fill(255, 225, 225)
+  p.stroke(255, 255, 225)
+  p.strokeWeight(20)
+  p.arc(0, -50, 500, 400, p.PI/15, p.PI-p.PI/15)
+  p.pop()
   
-  push()
-  translate(width/2, height/2)
-  rotate(PI/-8)
-  fill(255, 225, 225)
-  stroke(125)
-  strokeWeight(20)
-  arc(0, 50, 500, 400, PI+PI/15, 2*PI-PI/15)
-  pop()
+  p.push()
+  p.translate(p.width/2, p.height/2)
+  p.rotate(p.PI/-8)
+  p.fill(255, 225, 225)
+  p.stroke(125)
+  p.strokeWeight(20)
+  p.arc(0, 50, 500, 400, p.PI+p.PI/15, 2*p.PI-p.PI/15)
+  p.pop()
   
-  push()
-  translate(width/2, height/2)
-  rotate(PI / -8)
-  noFill()
-  stroke(150)
-  strokeWeight(20)
-  ellipse(0, -50, 500, 400)
-  pop()
-  pop()
+  p.push()
+  p.translate(p.width/2, p.height/2)
+  p.rotate(p.PI / -8)
+  p.noFill()
+  p.stroke(150)
+  p.strokeWeight(20)
+  p.ellipse(0, -50, 500, 400)
+  p.pop()  
   
-  
-  text("Ponsant's ring", mouseX, mouseY)
+  p.text("Ponsant's ring", p.mouseX, p.mouseY)
 }
+});

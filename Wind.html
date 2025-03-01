@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+    <style>
+    body {
+    margin: 0;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <main style="background-color: black">
+    <style>
+        a:visited{
+            color:gray;
+        }
+        a:hover{
+            color: white;
+        }
+        a:link{
+            color: white;
+        }
+        </style>
+    <a href="LOADING.html?next=TYPO.html" style="text-decoration: none">BACK</a>
+    </main>
+<script>
+    var w = window.innerWidth;
+var h = window.innerHeight;  
+let grotesk;
+let _alphabet1 = [];
+let _alphabet2 = [];
+let _bubble = [];
+let alphabetArray1;
+let alphabetArray2;
+
+let fadeAmount = 255;  // 透明度控制
+let isFadingOut = false;  // 点击切换淡入淡出
+
+function preload() {
+  grotesk = loadFont('Grotesk_Bold.otf');
+}
+
+function setup() {
+  createCanvas(w, h);
+  textFont(grotesk);
+  rectMode(CENTER);
+  alphabetArray1 = grotesk.textToPoints('Wind', width / 2 - 175, height / 2 + 40, 150);
+  alphabetArray2 = alphabetArray1;
+
+  for (let i = 0; i < alphabetArray1.length; i++) {
+    _alphabet1[i] = new Alphabet1(alphabetArray1[i].x, alphabetArray1[i].y);
+  }
+
+  for (let i = 0; i < alphabetArray2.length; i++) {
+    _alphabet2[i] = new Alphabet2(alphabetArray2[i].x, alphabetArray2[i].y);
+  }
+
+  for (let i = 0; i < 150; i++) {
+    _bubble[i] = new Bubble();
+  }
+}
+
+function draw() {
+  background(0);
+  noStroke();
+  // 控制透明度渐变
+  if (isFadingOut) {
+    fadeAmount -= 5;
+    if (fadeAmount < 0) fadeAmount = 0;
+  } else {
+    fadeAmount += 5;
+    if (fadeAmount > 255) fadeAmount = 255;
+  }
+
+  for (let i = 0; i < _bubble.length; i++) {
+    _bubble[i].show(fadeAmount);
+    _bubble[i].move();
+    _bubble[i].collisionDetection();
+  }
+
+  for (let i = 0; i < _alphabet1.length; i++) {
+    if (_alphabet1[i] === _alphabet2[i]) {
+      _alphabet2[i].show(fadeAmount);  // 传透明度
+    }
+  }
+}
+
+// 点击切换淡入淡出
+function mousePressed() {
+  isFadingOut = !isFadingOut;
+}
+
+// 彩色小方块
+class Alphabet1 {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.col = color(random(255), random(255), random(255));
+  }
+
+  show(alpha) {
+    fill(red(this.col), green(this.col), blue(this.col), alpha);
+    rect(this.x, this.y, 3, 3);
+  }
+}
+
+// 彩色小圆点
+class Alphabet2 {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.col = color(random(255), random(255), random(255));
+  }
+
+  show(alpha) {
+    fill(red(this.col), green(this.col), blue(this.col), alpha);
+    ellipse(this.x, this.y, 3, 3);
+  }
+}
+
+// 彩色气泡
+class Bubble {
+  constructor() {
+    this.x = random(width);
+    this.y = random(height);
+    this.s = random(5, 5);
+    this.direction = random(-20, 20);
+    this.direction1 = random(-20, 20);
+    this.col = color(random(255), random(255), random(255));
+  }
+
+  show(alpha) {
+    fill(red(this.col), green(this.col), blue(this.col), alpha);
+    rect(this.x, this.y, this.s, this.s);
+  }
+
+  move() {
+    this.x = this.x + this.direction;
+    this.y = this.y + this.direction1;
+
+    if (this.x > width || this.x < 0) {
+      this.direction = -this.direction;
+    }
+    if (this.y > height || this.y < 0) {  // 修正y的边界判断
+      this.direction1 = -this.direction1;
+    }
+  }
+
+  collisionDetection() {
+    for (let i = 0; i < _alphabet1.length; i++) {
+      let d = dist(_alphabet1[i].x, _alphabet1[i].y, this.x, this.y);
+      if (d < 1) {
+        this.direction = -this.direction;
+        this.direction1 = -this.direction1;
+        _alphabet1.splice(i, 1, _alphabet2[i]);
+      }
+    }
+  }
+}
+              window.onresize = function() {
+  w = window.innerWidth;
+  h = window.innerHeight;  
+  canvas.size(w, h);
+}
+      </script>
+  </body>
+</html>

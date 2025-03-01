@@ -85,19 +85,54 @@
   grid-area: footer;
 }
 </style>
+ <link rel="stylesheet" href="TYPO.css">
   </head>
   
   <body>
+       <header>
+        <a href="index.html" class="logo">
+            <img src="LOGO.png" alt="">
+        </a>
+        <div class="group">
+            <ul class="navigation">
+                <li><a href="#">Home</a></li>
+                <li><a href="LOADING.html?next=TYPO.html">Projects</a></li>
+                <li><a href="LOADING.html?next=About.html">About</a></li>
+                <!--        <li><a href="#">Services</a></li>-->
+<!--                <li><a href="#">Blog</a></li>-->
+                <li><a href="LOADING.html?next=Contact.html">Contact</a></li>
+            </ul>
+            <div class="search">
+                <span class="icon">
+                    <ion-icon name="search-outline" class="searchBtn"></ion-icon>
+                </span>
+                <span class="icon">
+                    <ion-icon name="close-outline" class="closeBtn"></ion-icon>
+                </span>
+            </div>
+            <ion-icon name="menu-outline" class="menuToggle"></ion-icon>
+        </div>
+        <div class="searchBox">
+            <input type="text" placeholder="Search here...">
+        </div>
+    </header>
     <main>
 <div class="container">
      <div id="one"></div>
   <div class="header"><h2>TextToPoints_exercise</h2></div>
-  <div class="menu"><a href="#">Link 1</a><br><a href="#">Link 2</a><br><a href="#">Link 3</a></div>
+  <div class="menu"><a href="LOADING.html?next=Snow.html">Snow</a><br><a href="LOADING.html?next=Rain.html">Rain</a><br><a href="LOADING.html?next=Wind.html">Wind</a></div>
   <div class="content"><h3>Lorem Ipsum</h3><p>Lorem ipsum odor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.</p></div>
   <div class="footer"><h4>Footer</h4></div>
 </div>
 
     </main>
+    <script src="js/script.js"></script>
     <script src="TYPO_01.js"></script>
+        <script>
+    // 定义按钮的跳转逻辑
+    function navigateTo(targetPage) {
+      window.location.href = `LOADING.html?next=${targetPage}`;
+    }
+  </script>
   </body>
 </html>

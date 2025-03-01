@@ -1,124 +1,105 @@
-let currentMode = 1
+new p5(function(p) {
+      p.currentMode = 1;
 
-function setup() {
-  createCanvas(640, 640);
-  background(0);
+  p.setup = function() {
+  let canvas = p.createCanvas(300, 300);
+      canvas.parent('two');
+  p.background(0);
 }
 
-function draw() {
-   
-  if (currentMode === 1) {
-    conditionGroupA1()
-  } else if (currentMode === 2) {
-    conditionGroupB2()
+p.draw = function() {
+    if (p.currentMode === 1) {
+    p.conditionGroupA1()
+  } else if (p.currentMode === 2) {
+    p.conditionGroupB2()
   }
-}
-  
-  function conditionGroupA1(){
-  // Face
-    // color
-    
-    // shape
-    let faceWidth = map(mouseX, 0, windowWidth, 64, 640)
-    let faceHeight = map(mouseY, 0, windowHeight, 64, 640)
-    
-  // Eyes
-    // color
+};
 
-    // shape
-     let eyeX = faceWidth / 5
-     let LeyeSizeM = random(0, faceWidth / 5)
-     let ReyeSizeM = random(0, faceWidth / 5)
-     
-     if (faceHeight <= faceWidth / 5) {
-       faceHeight = faceWidth / 5
-     }
-     if (faceWidth <= faceWidth / 5) {
-       faceWidth = faceWidth / 5
-     }
-    
-     background(0);
-    
-     translate(width/2, height/2)
-  
-     //face
-     fill(255);
-     rectMode(CENTER);
-     rect(0, 0, faceWidth, faceHeight, 50);
-  
-    //Leye
-     fill(0);
-     ellipse( eyeX, 0, LeyeSizeM);
-     
-     //Reye
-     fill(0);
-     ellipse( -eyeX, 0, ReyeSizeM);
-    
-    resetMatrix()
-    }
 
-    function conditionGroupB2(){
-  // Face
-    // color
     
-    // shape
-    let faceWidth = map(mouseX, 0, width, 64, 640)
-    let faceHeight = map(mouseY, 0, height, 64, 640)
     
-  // Eyes
-    // color
-
-    // shape
-     let eyeX = faceWidth / 5
-     let LeyeSizeM = random(0, faceWidth / 5)
-     let ReyeSizeM = random(0, faceWidth / 5)
-     
-     if (faceHeight <= faceWidth / 5) {
-       faceHeight = faceWidth / 5
-     }
-     if (faceWidth <= faceWidth / 5) {
-       faceWidth = faceWidth / 5
-     }
     
-     background(0);
-    
-     translate(width/2, height/2)
-  
-     //face
-     fill(255);
-     ellipse(0, 0, faceWidth, faceHeight);
-  
-    //Leye
-     fill(0);
-     ellipse( eyeX, 0, LeyeSizeM);
-     
-     //Reye
-     fill(0);
-     ellipse( -eyeX, 0, ReyeSizeM);
+  p.conditionGroupA1 = function(){
       
-     resetMatrix()
-    }
+  // Face
+    p.faceWidth = p.map(p.mouseX, 0, p.windowWidth, 64, 640)
+    p.faceHeight = p.map(p.mouseY, 0, p.windowHeight, 64, 640)
+    
+  // Eyes
+     p.eyeX = p.faceWidth / 5
+     p.LeyeSizeM = p.random(0, p.faceWidth / 5)
+     p.ReyeSizeM = p.random(0, p.faceWidth / 5)
+     
+     if (p.faceHeight < p.faceWidth / 5) {
+       p.faceHeight = p.faceWidth / 5
+     };
+     if (p.faceWidth < p.faceWidth / 5) {
+       p.faceWidth = p.faceWidth / 5
+     };
+    
+    p.background(0);
+     p.translate(p.width/2, p.height/2)
   
-function keyPressed() {
-  if (key === 'a') {
-    currentMode = 1;
-  } else if (key === 'b') {
-    currentMode = 2;
+     //face
+     p.fill(255);
+     p.rectMode(p.CENTER);
+     p.rect(0, 0, p.faceWidth, p.faceHeight, 50);
+  
+    //Leye
+     p.fill(0);
+     p.ellipse( p.eyeX, 0, p.LeyeSizeM);
+     
+     //Reye
+     p.fill(0);
+     p.ellipse( -p.eyeX, 0, p.ReyeSizeM);
+    
+    p.resetMatrix()
+    };
+  
+    p.conditionGroupB2 = function(){
+  // Face
+
+    p.faceWidth = p.map(p.mouseX, 0, p.width, 64, 640)
+    p.faceHeight = p.map(p.mouseY, 0, p.height, 64, 640)
+    
+  // Eyes
+    // color
+
+    // shape
+     p.eyeX = p.faceWidth / 5
+     p.LeyeSizeM = p.random(0, p.faceWidth / 5)
+     p.ReyeSizeM = p.random(0, p.faceWidth / 5)
+     
+     if (p.faceHeight < p.faceWidth / 5) {
+       p.faceHeight = p.faceWidth / 5
+     };
+     if (p.faceWidth < p.faceWidth / 5) {
+       p.faceWidth = p.faceWidth / 5
+     };
+        
+     p.background(0);
+     p.translate(p.width/2, p.height/2)
+  
+     //face
+     p.fill(255);
+     p.ellipse(0, 0, p.faceWidth, p.faceHeight);
+  
+    //Leye
+     p.fill(0);
+     p.ellipse( p.eyeX, 0, p.LeyeSizeM);
+     
+     //Reye
+     p.fill(0);
+     p.ellipse( -p.eyeX, 0, p.ReyeSizeM);
+      
+     p.resetMatrix()
+    };
+  
+p.keyPressed = function() {
+  if (p.key === 'a') {
+    p.currentMode = 1;
+  } else if (p.key === 'b') {
+    p.currentMode = 2;
   }
-}
-  
-//     //light1
-//     fill( , , );
-//     ellipse( , , );
-  
-//     //light2
-//     fill( , , );
-//     ellipse( , , );
-  
-//     //mouth
-//     stroke( , , );
-//     strokeWeight();
-//     fill( , , );
-//     arc( , , , , ,)
-  
-  
+};
+ });

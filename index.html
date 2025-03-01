@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
     <script src="https://unpkg.com/intersection-observer"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -18,7 +19,7 @@
         <div class="group">
             <ul class="navigation">
                 <li><a href="#">Home</a></li>
-                <li><a href="TYPO.html">Projects</a></li>
+                <li><a href="LOADING.html?next=TYPO.html">Projects</a></li>
                 <li><a href="LOADING.html?next=About.html">About</a></li>
                 <!--        <li><a href="#">Services</a></li>-->
 <!--                <li><a href="#">Blog</a></li>-->
@@ -43,40 +44,55 @@
         <h2>RECENT WORK</h2>
         <br>
         <section id="card">
+           
+           
             <div class="card">
-                <div id="01"></div>
-                <img src="01/01.png" alt="">
-                <a href="LOADING.html?next=01/index.html" class="project-link">View Project</a>
+                               <div id="one"></div>
+                <a href="LOADING.html?next=https://editor.p5js.org/Ruoyu50/sketches/LCh5nlIFj" class="project-link">
+                </a>
+                
+                </div>
+<!--            </div>-->
+            
+            
+            
+            
+            <div class="card">
+               <div id="two"></div>
+                <a href="LOADING.html?next=https://editor.p5js.org/Ruoyu50/sketches/4ywPg-pmk" class="project-link">               
+                </a>
             </div>
-            <div class="card">
-                               <div id="02"></div>
-               <img src="02/02.png" alt="">
-                <a href="LOADING.html?next=02/index.html" class="project-link">View Project</a>
+            
+                <div class="card">
+                <div id="three"></div>
+                <a href="LOADING.html?next=https://editor.p5js.org/Ruoyu50/sketches/NNL7Qz3s1" class="project-link" style="width: 30%; height: 30%;">
+                </a>
             </div>
+            
             <div class="card">
-                               <div id="03"></div>
-               <img src="03/03.png" alt="">
-
-                <a href="LOADING.html?next=03/index.html" class="project-link">View Project</a>
+                <div id="four"></div>
+                <a href="LOADING.html?next=https://editor.p5js.org/Ruoyu50/sketches/XLz5y1mns" class="project-link">
+                </a>
             </div>
+            
+            
+            
+            
             <div class="card">
-                               <div id="04"></div>
-               <img src="04/04.png" alt="">
-
-
-                <a href="LOADING.html?next=04/index.html" class="project-link">View Project</a>
+<!--                <div id="five"></div>-->
+                <a href="LOADING.html?next=05/index.html" class="project-link">
+<!--                <img src="05/05.png" alt="">-->
+                </a>
             </div>
+            
+            
+            
+            
             <div class="card">
-                               <div id="05"></div>
-               <img src="05/05.png" alt="">
-
-                <a href="LOADING.html?next=05/index.html" class="project-link">View Project</a>
-            </div>
-            <div class="card">
-                               <div id="06"></div>
-               <img src="06/06.png" alt="">
-
-                <a href="LOADING.html?next=06/index.html" class="project-link">View Project</a>
+<!--                <div id="six"></div>-->
+                <a href="LOADING.html?next=06/index.html" class="project-link">
+<!--                <img src="06/06.png" alt="">-->
+                </a>
             </div>
            
         </section>
@@ -90,6 +106,14 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="js/script.js"></script>
+    <script src="01/sketch.js"></script>
+    <script src="02/sketch.js"></script>
+    <script src="03/sketch.js"></script>
+<!--
+    <script src="04/sketch.js"></script>
+    <script src="05/sketch.js"></script>
+    <script src="06/sketch.js"></script>
+-->
     <script>
     // 定义按钮的跳转逻辑
     function navigateTo(targetPage) {

@@ -1,10 +1,12 @@
-let input;
-let region = "CN";
-let currentMode = 1;
+new p5(function(p){
+p.input;
+p.region = "CN";
+p.currentMode = 1;
 
-function setup() {
-  createCanvas(640, 640);
-  input = createInput();
+p.setup = function() {
+  canvas = p.createCanvas(640, 640);
+    canvas.parent('four');
+  input = p.createInput();
   input.position(20, 20);
   input.size(360);
   input.attribute('placeholder', 'Type CN or NY and hit Enter...');
@@ -166,4 +168,5 @@ function drawNumbers(numbers, offset) {
     strokeWeight(2); 
     text(numbers[i], x, y);
   }
-}
+};
+});
