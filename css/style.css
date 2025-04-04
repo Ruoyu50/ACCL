@@ -279,17 +279,10 @@ header .search
     object-fit: cover;  让图片填充但不会变形 
 } */
 
-/* #01, #02, #03, #04, #05, #06, #07 {
-width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-   background: #000;
-    border: 2px solid #444;
-    border-radius: 8px;
-   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-} */
+a[title="three"]{
+  width: 50%;
+  height: 50%;
+}
 
 .project-link {
     position: absolute; /* 绝对定位 */
