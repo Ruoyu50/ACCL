@@ -241,63 +241,18 @@ header .search
 /*        border: 3px solid red;*/
     }
 
-
-
-
-
-/* From Uiverse.io by SteveBloX */ 
-#card {
-/*    border: 2px solid red;*/
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 默认四列 */
-    gap: 16px;
-}
-
-.card {
-/*    display: flex;*/
-    position: relative;  /* 使得内部元素可以根据 z-index 控制层级 */
-    box-sizing: border-box;
-    height: 300px;
-    background: rgba(217, 217, 217, 0.58);
-    border: 1px solid white;
-    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(6px);
-    border-radius: 17px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s;
-    align-items: center;
-    justify-content: center;
-    font-weight: bolder;
-    color: black;
-        overflow: hidden; /* 隐藏溢出的部分 */
-}
-
-.card a {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-.card img{
-    display: block;
-    width: auto;
-    height: auto;
-    object-fit: cover;  让图片填充但不会变形 
-    display: block;
-}
-
 #01, #02, #03, #04, #05, #06, #07 {
-width: 100%;
+    width: 100%;
     max-width: 500px;
     margin: 0 auto;
-/*    background: #000;*/
+    /* background: #000; */
     border: 2px solid #444;
     border-radius: 8px;
-/*    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);*/
+    /* box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); */
     overflow: hidden;
     transition: transform 0.3s ease;
 }
+
 
 .project-link {
     position: absolute; /* 绝对定位 */

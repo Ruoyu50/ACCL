@@ -5,8 +5,8 @@ p.x = 50;
 p.y = 50;
 
 p.setup = function() {
-  canvas = p.createCanvas(400, 400);
-    canvas.parent('three');
+  let canvas = p.createCanvas(400, 400);
+  canvas.parent('three');
   p.background(127.5);
 };
 
@@ -22,9 +22,9 @@ p.draw = function() {
 p.GroupA = function() {
   if (p.mouseX < p.width / 2 && p.mouseY < p.height / 2) {
     p.background(255, 0, 0); 
-  } else if (p.mouseX >= p.width / 2 && p.mouseY < p.height / 2) {
-    background(0, 255, 0); 
-  } else if (p.mouseX < p.width / 2 && p.mouseY >= p.height / 2) {
+  } else if (p.mouseX > p.width / 2 && p.mouseY < p.height / 2) {
+    p.background(0, 255, 0); 
+  } else if (p.mouseX < p.width / 2 && p.mouseY > p.height / 2) {
     p.background(0, 0, 255); 
   } else {
     p.background(0); 
@@ -35,9 +35,9 @@ p.GroupA = function() {
 p.GroupB = function() {
   if (p.mouseX < p.width / 2 && p.mouseY < p.height / 2) {
     p.background(255, 255, 0); 
-  } else if (p.mouseX >= p.width / 2 && p.mouseY < p.height / 2) {
+  } else if (p.mouseX > p.width / 2 && p.mouseY < p.height / 2) {
     p.background(255, 0, 255); 
-  } else if (p.mouseX < p.width / 2 && p.mouseY >= p.height / 2) {
+  } else if (p.mouseX < p.width / 2 && p.mouseY > p.height / 2) {
     p.background(0, 255, 255); 
   } else {
     p.background(255); 
@@ -51,12 +51,12 @@ p.GroupB = function() {
   } else if (p.key === 'b') {
     p.modeB = true;  
     p.modeA = false;  
-  };
+  }
 };
 
   p.mousePressed  = function() {
   p.modeA = false;
   p.modeB = false;
   p.background(127.5);
-};
+}
 });
