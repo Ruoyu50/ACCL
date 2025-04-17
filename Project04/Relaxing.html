@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowing Meditation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="meditationCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('meditationCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas to window size
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    // Animation parameters
+    const points = 200; // Number of points in the flow field
+    const lineColor = '#ccc';
+    const lineOpacity = 0.2;
+    
+    // Time variables
+    let time = 0;
+    const timeStep = 0.0005; // Very slow movement
+    
+    function draw() {
+      // Clear canvas with white background
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Center of the canvas
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      
+      // Size of the flow field (responsive to canvas size)
+      const size = Math.min(canvas.width, canvas.height) * 0.4;
+      
+      ctx.strokeStyle = lineColor;
+      ctx.globalAlpha = lineOpacity;
+      ctx.lineWidth = 1;
+      
+      // Draw flow field
+      ctx.beginPath();
+      
+      for (let i = 0; i <= points; i++) {
+        // Polar coordinates for base shape
+        const angle = (i / points) * Math.PI * 2;
+        
+        // Use multiple sine waves with different frequencies and phases
+        // to create organic, flowing movement
+        const radiusVariation = 
+          Math.sin(angle * 3 + time * 0.3) * 0.1 + 
+          Math.cos(angle * 5 - time * 0.2) * 0.15 + 
+          Math.sin(angle * 2 + time * 0.5) * 0.2;
+        
+        // Base radius plus variation
+        const radius = size * (0.8 + radiusVariation * 0.3);
+        
+        // Convert to cartesian coordinates
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+        
+        // First point moves to, others line to
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      
+      // Close the path
+      ctx.closePath();
+      ctx.stroke();
+      
+      // Add some inner details with even lower opacity
+      ctx.globalAlpha = lineOpacity * 0.7;
+      ctx.beginPath();
+      
+      for (let i = 0; i <= points; i++) {
+        const angle = (i / points) * Math.PI * 2;
+        
+        const innerRadiusVariation = 
+          Math.cos(angle * 4 - time * 0.4) * 0.2 + 
+          Math.sin(angle * 6 + time * 0.3) * 0.15;
+        
+        const innerRadius = size * (0.5 + innerRadiusVariation * 0.25);
+        
+        const x = centerX + Math.cos(angle) * innerRadius;
+        const y = centerY + Math.sin(angle) * innerRadius;
+        
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      
+      ctx.closePath();
+      ctx.stroke();
+      
+      // Update time variable
+      time += timeStep;
+      
+      // Continue animation
+      requestAnimationFrame(draw);
+    }
+    
+    // Start animation
+    draw();
+  </script>
+</body>
+</html>
