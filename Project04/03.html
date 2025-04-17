@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>project04</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="centered">
+    <h2>✨ RestZone Response ✨</h2>
+    <div id="result"></div>
+    <button onclick="location.href='index.html'">Again</button>
+  </main>
+  <script>
+    const data = JSON.parse(localStorage.getItem('restzoneAnswers')) || {};
+    const resultBox = document.getElementById('result');
+    resultBox.innerHTML =resultBox.innerHTML = `
+  <p>1. The weather today feels like: <strong>${data.weather || 'unknown'}</strong>.</p>
+  <p>2. You’d love to hear some <strong>${data.encourager || 'nice music'}</strong> right now.</p>
+  <p>3. To rest, you’d prefer to: <strong>${data.words || 'take it easy somehow'}</strong>.</p>
+  <p>4. You’d like to go to: <strong>${data.symbol || 'a quiet place'}</strong>.</p>
+  <p>5. Your favorite number is: <strong>${data.score || '?'}</strong>.</p>
+  <p>6. If the day ends soon, you would: <strong>${data.challenge || 'find something meaningful to do'}</strong>.</p>
+  <p>7. Today, you feel: <em>“${data.comfort || 'a little messy but still standing'}”</em>.</p>
+  <p>8. And one thing you want to do today is: <strong>${data.action || 'breathe and just exist'}</strong>.</p>
+`;
+  </script>
+</body>
+</html>

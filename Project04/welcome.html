@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>project04</title>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+        <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body style="background-color: white; text-align: center; font-family: sans-serif;">
+
+  <h1 style="margin-top: 30vh;">Welcome to  RestZone 🌿</h1>
+  <p style="margin-top: 20px;">An easy quiz for students under school pressure</p>
+
+  <button onclick="start()" style="margin-top: 40px; padding: 10px 20px; font-size: 16px;">
+    Go to the quiz page →
+  </button>
+
+  <audio id="bg-music" src="assets/music.mp3" loop></audio>
+
+  <script>
+    function start() {
+    //   // 播放背景音乐
+    //   const music = document.getElementById("bg-music");
+    //   music.play().catch(() => {
+    //     alert("点击后才能播放音乐，请再点一次 😊");
+    //   });
+
+      // 跳转到你的主页面，比如 checkin.html
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
