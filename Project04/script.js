@@ -58,7 +58,7 @@ const questions = [
       <h2>${q.text}</h2>
       <input type="${q.type}" id="answerInput" />
       <br><br>
-      <button onclick="saveAnswer()">下一题</button>
+      <button onclick="saveAnswer()">Next</button>
     `;
   }
   
