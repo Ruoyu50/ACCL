@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Weather App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Asking Weather App</h1>
+
+    <h2>Check the weather by city</h2>
+    <form id="cityForm">
+      How's <input type="text" id="customCitiesInput" placeholder="Enter cities separated by comma">
+      today?
+      <button type="submit">Submit</button>
+    </form>
+    
+    <div id="cityResult"></div>
+    
+    <h2>Find cities with specific temperature</h2>
+    <form id="tempForm">
+      What city is <input type="number" id="tempInput" placeholder="Enter temp in °F"> today?
+      <button type="submit">Submit</button>
+    </form>
+    <div id="tempResult"></div>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
